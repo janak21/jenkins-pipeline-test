@@ -6,23 +6,24 @@ pipeline {
             steps {
                 sh 'git clone https://github.com/janak21/jenkins-pipeline-test.git && cd jenkins-pipeline-test'
             }
-        }stage('build'){
+        }
+        stage('build'){
             steps {
                 sh 'docker build -t node-app .'
             }
-        }stage('deploy'){
+        }
+        stage('deploy'){
             steps {
-                sh 'docker run -d weather-app -p 80:8080 localhost/node-app'
+                sh 'docker run -d -p 80:8080 node-app'
             }
         }
-    }post {
+    }
+    post {
         success{
             echo 'Your deployment is successful. Please check your application on port 80.'
         }
         failure {
-            echo 'Something went wrong. Plese check latest build logs.'
+            echo 'Something went wrong. Please check latest build logs.'
         }
     }
 }
-
-
