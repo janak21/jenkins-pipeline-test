@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('pull') {
             steps {
-                sh 'git clone https://github.com/janak21/jenkins-pipeline-test.git'
-                sh 'cd jenkins-pipeline-test'
+                sh 'git clone https://github.com/janak21/jenkins-pipeline-test.git && cd jenkins-pipeline-test'
             }
         }stage('build'){
             steps {
@@ -13,7 +12,7 @@ pipeline {
             }
         }stage('deploy'){
             steps {
-                sh 'docker run -n weather-app -p 80:8080 localhost/node-app'
+                sh 'docker run -d weather-app -p 80:8080 localhost/node-app'
             }
         }
     }post {
