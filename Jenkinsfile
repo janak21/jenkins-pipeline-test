@@ -11,12 +11,13 @@ pipeline {
         }
         stage('build'){
             steps {
+                sh 'docker rmi node-app'
                 sh 'docker build -t node-app jenkins-pipeline-test'
             }
         }
         stage('deploy'){
             steps {
-                sh 'docker run -d -p 80:8080 localhost/node-app'
+                sh 'docker run -d -p 80:8080 docker.io/library/node-app'
             }
         }
     }
