@@ -10,7 +10,7 @@ pipeline {
         }
         stage('build'){
             steps {
-                sh 'docker rmi node-app'
+                sh 'docker rmi -f node-app'
                 sh 'docker build -t node-app jenkins-pipeline-test'
             }
         }
