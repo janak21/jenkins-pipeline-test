@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('pull') {
             steps {
+                sh 'rm -rf *'
                 sh 'git clone https://github.com/janak21/jenkins-pipeline-test.git && cd jenkins-pipeline-test'
             }
         }
