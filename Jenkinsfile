@@ -6,13 +6,12 @@ pipeline {
             steps {
                 sh 'rm -rf *'
                 sh 'git clone https://github.com/janak21/jenkins-pipeline-test.git && cd jenkins-pipeline-test'
-                sh 'pwd'
+                sh 'ls -la'
             }
         }
         stage('build'){
             steps {
-                sh 'pwd'
-                sh 'docker build -t node-app .'
+                sh 'docker build -t node-app jenkins-pipeline-test'
             }
         }
         stage('deploy'){
