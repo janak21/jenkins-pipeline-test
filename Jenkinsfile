@@ -16,7 +16,8 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                sh 'docker run -d -p 80:8080 docker.io/library/node-app'
+                sh 'docker rm -f weather-app'
+                sh 'docker run --name weather-app -d -p 80:8080 docker.io/library/node-app'
             }
         }
     }
