@@ -14,7 +14,7 @@ pipeline {
         }
         stage('deploy'){
             steps {
-                sh 'docker run -d -p 80:8080 node-app'
+                sh 'docker run -d -p 80:8080 localhost/node-app'
             }
         }
     }
